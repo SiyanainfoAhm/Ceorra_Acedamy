@@ -111,8 +111,9 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function ArticlePage({ params }: { params: { id: string } }) {
-  const article = articleData[params.id as keyof typeof articleData];
+export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const article = articleData[id as keyof typeof articleData];
 
   if (!article) {
     return (
