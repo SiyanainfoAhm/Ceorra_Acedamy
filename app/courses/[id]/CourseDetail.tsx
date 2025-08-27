@@ -157,7 +157,7 @@ interface CourseDetailProps {
 
 export default function CourseDetail({ courseId }: CourseDetailProps) {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
-  const course = courseData[courseId as keyof typeof courseData];
+  const course = courseData[courseId as keyof typeof courseData] || courseData[parseInt(courseId) as keyof typeof courseData];
 
   useEffect(() => {
     const observerOptions = {

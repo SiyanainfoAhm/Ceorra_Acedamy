@@ -113,7 +113,7 @@ export async function generateStaticParams() {
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const article = articleData[id as keyof typeof articleData];
+  const article = articleData[id as keyof typeof articleData] || articleData[parseInt(id) as keyof typeof articleData];
 
   if (!article) {
     return (
