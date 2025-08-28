@@ -635,7 +635,7 @@ export default function CourseDetail({ courseId }: CourseDetailProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   
-  const course = courseData[courseId as keyof typeof courseData];
+  const course = courseData[parseInt(courseId) as keyof typeof courseData];
 
   useEffect(() => {
     const observerOptions = {
