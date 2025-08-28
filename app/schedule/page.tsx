@@ -27,16 +27,37 @@ export default function SchedulePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Prepare form data for submission using application/x-www-form-urlencoded format
+      const formDataToSubmit = new URLSearchParams();
+      formDataToSubmit.append('name', formData.name);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('phone', formData.phone);
+      formDataToSubmit.append('preferred_date', formData.preferred_date);
+      formDataToSubmit.append('preferred_time', formData.preferred_time);
+      formDataToSubmit.append('message', formData.message);
+
+      const response = await fetch('https://readdy.ai/api/form/d2nthe1n5f9tmn9vu60g', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formDataToSubmit.toString()
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', preferred_date: '', preferred_time: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', preferred_date: '', preferred_time: '', message: '' });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }, 1000);
+    }
   };
 
   // Get today's date in YYYY-MM-DD format for min date
@@ -73,7 +94,16 @@ export default function SchedulePage() {
                   </div>
                 )}
 
-                <form id="schedule-form" onSubmit={handleSubmit} className="space-y-6">
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <i className="ri-error-warning-line w-5 h-5 flex items-center justify-center text-red-600"></i>
+                      <span className="text-red-700 font-medium">Something went wrong. Please try again or contact us directly.</span>
+                    </div>
+                  </div>
+                )}
+
+                <form id="schedule-form" data-readdy-form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-[#4D4D4D] mb-2">
@@ -186,7 +216,7 @@ export default function SchedulePage() {
                   
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || formData.message.length > 500}
                     className="w-full bg-[#0097A7] text-white py-4 px-6 rounded-lg font-bold hover:bg-[#006B7A] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed whitespace-nowrap"
                   >
                     {isSubmitting ? (
@@ -283,10 +313,10 @@ export default function SchedulePage() {
               <h3 className="text-lg font-semibold text-[#4D4D4D] mb-2">Call Us Directly</h3>
               <p className="text-gray-600 mb-4">Speak with our team right away</p>
               <a 
-                href="tel:+1234567890"
+                href="tel:+916357412888"
                 className="text-[#0097A7] hover:text-[#006B7A] font-medium"
               >
-                +1 (234) 567-8900
+                +91 63574 12888
               </a>
             </div>
             
@@ -297,10 +327,10 @@ export default function SchedulePage() {
               <h3 className="text-lg font-semibold text-[#4D4D4D] mb-2">Email Us</h3>
               <p className="text-gray-600 mb-4">Send us your questions</p>
               <a 
-                href="mailto:info@ceorraacademy.com"
+                href="mailto:Inquiry@ceorra.in"
                 className="text-[#0097A7] hover:text-[#006B7A] font-medium"
               >
-                info@ceorraacademy.com
+                Inquiry@ceorra.in
               </a>
             </div>
             

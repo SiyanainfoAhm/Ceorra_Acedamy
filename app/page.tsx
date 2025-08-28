@@ -53,22 +53,28 @@ export default function Home() {
 
   const courses = [
     {
-      title: 'Digital Marketing Mastery',
-      description: 'Master SEO, social media marketing, and digital advertising strategies.',
-      duration: '8 weeks',
-      image: 'https://readdy.ai/api/search-image?query=modern%20digital%20marketing%20workspace%20with%20multiple%20screens%20showing%20analytics%20dashboards%2C%20social%20media%20campaigns%2C%20and%20SEO%20tools%2C%20professional%20office%20environment%20with%20bright%20lighting%20and%20contemporary%20design%2C%20clean%20minimalist%20background&width=400&height=250&seq=course1&orientation=landscape'
+      id: 1,
+      slug: 'spoken-english',
+      title: 'Spoken English',
+      description: 'Improve your spoken English skills with practical exercises and real-world conversations.',
+      duration: '2-2.5 months',
+      image: 'https://readdy.ai/api/search-image?query=professional%20spoken%20English%20language%20learning%20classroom%20with%20students%20practicing%20conversation%20skills%2C%20modern%20educational%20environment%20with%20interactive%20teaching%20methods%2C%20bright%20clean%20background&width=400&height=250&seq=se001h&orientation=landscape'
     },
     {
-      title: 'Data Analytics & Visualization',
-      description: 'Learn to analyze data and create compelling visualizations using modern tools.',
-      duration: '10 weeks',
-      image: 'https://readdy.ai/api/search-image?query=data%20analytics%20workspace%20with%20charts%20graphs%20and%20statistics%20displays%20on%20computer%20screens%2C%20modern%20office%20setting%20with%20professional%20data%20scientist%20working%2C%20clean%20white%20background%20with%20blue%20accent%20colors&width=400&height=250&seq=course2&orientation=landscape'
+      id: 5,
+      slug: 'digital-marketing',
+      title: 'Digital Marketing',
+      description: 'Complete guide to digital marketing strategies including SEO, social media, and online advertising.',
+      duration: '4 months',
+      image: 'https://readdy.ai/api/search-image?query=digital%20marketing%20workspace%20with%20multiple%20screens%20showing%20social%20media%20analytics%20SEO%20tools%20and%20online%20campaigns%2C%20modern%20marketing%20office%20environment&width=400&height=250&seq=dm002h&orientation=landscape'
     },
     {
-      title: 'Web Development Bootcamp',
-      description: 'Build responsive websites and web applications from scratch.',
-      duration: '12 weeks',
-      image: 'https://readdy.ai/api/search-image?query=web%20development%20coding%20workspace%20with%20multiple%20monitors%20showing%20code%20editors%20and%20websites%2C%20modern%20developer%20setup%20with%20clean%20desk%20and%20professional%20lighting%2C%20minimalist%20background%20design&width=400&height=250&seq=course3&orientation=landscape'
+      id: 6,
+      slug: 'web-development-full-stack',
+      title: 'Web Development (Full Stack)',
+      description: 'Build responsive websites and web applications using modern frameworks and technologies.',
+      duration: '5 months',
+      image: 'https://readdy.ai/api/search-image?query=full%20stack%20web%20development%20coding%20workspace%20with%20multiple%20monitors%20showing%20HTML%20CSS%20JavaScript%20and%20backend%20code%2C%20modern%20programming%20environment&width=400&height=250&seq=fs001h&orientation=landscape'
     }
   ];
 
@@ -190,7 +196,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg lg:text-xl font-semibold text-[#4D4D4D] mb-3 group-hover:text-[#0097A7] transition-colors duration-300">{course.title}</h3>
                   <p className="text-[#4D4D4D] mb-6 leading-relaxed">{course.description}</p>
-                  <Link href="/courses" className="bg-[#0097A7] text-white px-6 py-3 rounded-full hover:bg-[#007B87] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 font-medium whitespace-nowrap cursor-pointer inline-block">
+                  <Link href={`/courses/${course.id}/${course.slug}`} className="bg-[#0097A7] text-white px-6 py-3 rounded-full hover:bg-[#007B87] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 font-medium whitespace-nowrap cursor-pointer inline-block">
                     Learn More
                   </Link>
                 </div>

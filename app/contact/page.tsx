@@ -25,16 +25,35 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Prepare form data for submission using application/x-www-form-urlencoded format
+      const formDataToSubmit = new URLSearchParams();
+      formDataToSubmit.append('name', formData.name);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('phone', formData.phone);
+      formDataToSubmit.append('message', formData.message);
+
+      const response = await fetch('https://readdy.ai/api/form/d2ntmet1jcu2le4caso0', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formDataToSubmit.toString()
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }, 1000);
+    }
   };
 
   return (
@@ -67,7 +86,16 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <i className="ri-error-warning-line w-5 h-5 flex items-center justify-center text-red-600"></i>
+                    <span className="text-red-700 font-medium">Something went wrong. Please try again or contact us directly.</span>
+                  </div>
+                </div>
+              )}
+
+              <form id="contact-form" data-readdy-form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[#4D4D4D] mb-2">
@@ -139,7 +167,7 @@ export default function ContactPage() {
                 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || formData.message.length > 500}
                   className="w-full bg-[#0097A7] text-white py-4 px-6 rounded-lg font-bold hover:bg-[#006B7A] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   {isSubmitting ? (
@@ -166,8 +194,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-[#4D4D4D] mb-2">Email Us</h3>
                     <p className="text-gray-600 mb-2">Send us an email and we'll respond within 24 hours</p>
-                    <a href="mailto:info@ceorraacademy.com" className="text-[#0097A7] hover:text-[#006B7A] font-medium">
-                      info@ceorraacademy.com
+                    <a href="mailto:Inquiry@ceorra.in" className="text-[#0097A7] hover:text-[#006B7A] font-medium">
+                      Inquiry@ceorra.in
                     </a>
                   </div>
                 </div>
@@ -179,8 +207,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-[#4D4D4D] mb-2">Call Us</h3>
                     <p className="text-gray-600 mb-2">Speak with our team during business hours</p>
-                    <a href="tel:+1234567890" className="text-[#0097A7] hover:text-[#006B7A] font-medium">
-                      +1 (234) 567-8900
+                    <a href="tel:+916357412888" className="text-[#0097A7] hover:text-[#006B7A] font-medium">
+                      +91 63574 12888
                     </a>
                     <p className="text-sm text-gray-500 mt-1">Mon - Fri: 9:00 AM - 6:00 PM</p>
                   </div>
@@ -194,9 +222,9 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-[#4D4D4D] mb-2">Visit Us</h3>
                     <p className="text-gray-600 mb-2">Come visit our training center</p>
                     <address className="text-[#0097A7] not-italic">
-                      1234 Learning Boulevard<br />
-                      Education District<br />
-                      Professional City, PC 12345
+                      B-406/407, Navratna Corporate Park<br />
+                      near Ashokvatika, Ashok Vatika<br />
+                      Ahmedabad, Gujarat 380058
                     </address>
                   </div>
                 </div>
@@ -205,7 +233,7 @@ export default function ContactPage() {
               {/* Map */}
               <div className="rounded-xl overflow-hidden border border-gray-200">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.279909073!2d-74.25987368715491!3d40.697670063840744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1641234567890!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.7684556999937!2d72.5221907142825!3d23.03027442285977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8482ad6cbf4f%3A0x89c3b8c9b9d3a4c8!2sNavratna%20Corporate%20Park%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1641234567890!5m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}

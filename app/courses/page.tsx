@@ -38,84 +38,146 @@ export default function CoursesPage() {
   const courses = [
     {
       id: 1,
-      title: 'Digital Marketing Mastery',
-      category: 'digital',
-      description: 'Master the art of digital marketing with hands-on training in SEO, social media, and content strategy.',
-      duration: '8 weeks',
-      level: 'Intermediate',
-      image: 'https://readdy.ai/api/search-image?query=professional%20digital%20marketing%20workspace%20with%20laptop%20showing%20analytics%20dashboards%2C%20modern%20office%20environment%2C%20clean%20minimal%20background%2C%20bright%20lighting%2C%20business%20professional%20atmosphere&width=400&height=250&seq=dm001&orientation=landscape'
+      slug: 'spoken-english',
+      title: 'Spoken English',
+      category: 'personal',
+      description: 'This course focuses on improving your spoken English skills with practical exercises and real-world conversations to build confidence.',
+      duration: '2-2.5 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹9,440 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=professional%20spoken%20English%20language%20learning%20classroom%20with%20students%20practicing%20conversation%20skills%2C%20modern%20educational%20environment%20with%20interactive%20teaching%20methods%2C%20bright%20clean%20background&width=400&height=250&seq=se001&orientation=landscape'
     },
     {
       id: 2,
-      title: 'Business Leadership Excellence',
+      slug: 'certified-ms-office-with-ai',
+      title: 'Certified MS Office (with AI)',
       category: 'business',
-      description: 'Develop essential leadership skills and strategic thinking to excel in today\'s competitive business environment.',
-      duration: '6 weeks',
-      level: 'Advanced',
-      image: 'https://readdy.ai/api/search-image?query=business%20leadership%20training%20session%20with%20professional%20executives%20in%20modern%20conference%20room%2C%20leadership%20development%20concept%2C%20clean%20corporate%20environment%2C%20inspiring%20atmosphere&width=400&height=250&seq=ble001&orientation=landscape'
+      description: 'Comprehensive course covering MS Office applications enhanced with AI features for modern workplace productivity and efficiency.',
+      duration: '2 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹11,800 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=modern%20Microsoft%20Office%20training%20with%20AI%20integration%20showing%20Excel%20Word%20PowerPoint%20on%20computer%20screens%2C%20professional%20office%20workspace%2C%20clean%20technology%20environment&width=400&height=250&seq=mso001&orientation=landscape'
     },
     {
       id: 3,
-      title: 'Data Analytics Foundations',
-      category: 'technology',
-      description: 'Learn to analyze and interpret data using industry-standard tools and techniques for informed decision making.',
-      duration: '10 weeks',
-      level: 'Beginner',
-      image: 'https://readdy.ai/api/search-image?query=data%20analytics%20workspace%20with%20charts%20graphs%20and%20computer%20screens%20showing%20data%20visualization%2C%20modern%20tech%20office%2C%20clean%20professional%20setup%2C%20bright%20ambient%20lighting&width=400&height=250&seq=daf001&orientation=landscape'
+      slug: 'certified-ms-office-without-ai',
+      title: 'Certified MS Office (without AI)',
+      category: 'business',
+      description: 'Practical and comprehensive MS Office training covering Word, Excel, PowerPoint and other essential business applications.',
+      duration: '2 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹10,030 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=professional%20Microsoft%20Office%20training%20session%20with%20traditional%20desktop%20applications%2C%20business%20productivity%20workspace%2C%20organized%20clean%20office%20environment&width=400&height=250&seq=mso002&orientation=landscape'
     },
     {
       id: 4,
-      title: 'Project Management Professional',
+      slug: 'tally-gst',
+      title: 'Tally + GST',
       category: 'business',
-      description: 'Master project management methodologies and tools to lead successful projects from conception to completion.',
-      duration: '12 weeks',
-      level: 'Intermediate',
-      image: 'https://readdy.ai/api/search-image?query=project%20management%20team%20working%20on%20planning%20boards%20and%20digital%20tools%2C%20collaborative%20workspace%2C%20professional%20business%20environment%2C%20organized%20clean%20setting&width=400&height=250&seq=pmp001&orientation=landscape'
+      description: 'Learn accounting fundamentals with Tally software including GST compliance for efficient business financial management.',
+      duration: '2.5 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹13,570 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=Tally%20accounting%20software%20training%20with%20GST%20calculations%20on%20computer%20screen%2C%20professional%20accounting%20workspace%2C%20financial%20data%20management%20environment&width=400&height=250&seq=tally001&orientation=landscape'
     },
     {
       id: 5,
-      title: 'Creative Design Thinking',
-      category: 'personal',
-      description: 'Unlock your creative potential and learn design thinking processes to solve complex problems innovatively.',
-      duration: '5 weeks',
-      level: 'Beginner',
-      image: 'https://readdy.ai/api/search-image?query=creative%20design%20workshop%20with%20colorful%20sticky%20notes%20sketches%20and%20brainstorming%20materials%2C%20inspiring%20creative%20workspace%2C%20bright%20natural%20lighting%2C%20artistic%20professional%20environment&width=400&height=250&seq=cdt001&orientation=landscape'
+      slug: 'digital-marketing',
+      title: 'Digital Marketing',
+      category: 'digital',
+      description: 'Complete guide to digital marketing strategies including SEO, social media, content marketing and online advertising campaigns.',
+      duration: '4 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹26,550 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=digital%20marketing%20workspace%20with%20multiple%20screens%20showing%20social%20media%20analytics%20SEO%20tools%20and%20online%20campaigns%2C%20modern%20marketing%20office%20environment&width=400&height=250&seq=dm002&orientation=landscape'
     },
     {
       id: 6,
-      title: 'Web Development Bootcamp',
+      slug: 'web-development-full-stack',
+      title: 'Web Development (Full Stack)',
       category: 'technology',
-      description: 'Build modern websites and web applications using the latest technologies and best practices.',
-      duration: '16 weeks',
-      level: 'Beginner',
-      image: 'https://readdy.ai/api/search-image?query=web%20development%20coding%20workspace%20with%20multiple%20monitors%20showing%20code%20and%20websites%2C%20modern%20tech%20setup%2C%20clean%20minimal%20office%20environment%2C%20professional%20atmosphere&width=400&height=250&seq=wdb001&orientation=landscape'
+      description: 'Covers both front-end and back-end development technologies to build complete web applications from scratch.',
+      duration: '5 months',
+      level: 'Beginners, Intermediate, Expert',
+      price: '₹35,400 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=full%20stack%20web%20development%20coding%20workspace%20with%20multiple%20monitors%20showing%20HTML%20CSS%20JavaScript%20and%20backend%20code%2C%20modern%20programming%20environment&width=400&height=250&seq=fs001&orientation=landscape'
     },
     {
       id: 7,
-      title: 'Financial Planning & Analysis',
-      category: 'business',
-      description: 'Develop expertise in financial planning, budgeting, and analysis to drive business growth and profitability.',
-      duration: '8 weeks',
-      level: 'Intermediate',
-      image: 'https://readdy.ai/api/search-image?query=financial%20analysis%20workspace%20with%20charts%20spreadsheets%20and%20calculator%2C%20professional%20business%20office%2C%20clean%20organized%20desk%20setup%2C%20bright%20professional%20lighting&width=400&height=250&seq=fpa001&orientation=landscape'
+      slug: 'python-programming',
+      title: 'Python Programming',
+      category: 'technology',
+      description: 'Foundational programming course covering Python syntax, data structures, algorithms and practical application development.',
+      duration: '3 months',
+      level: 'Beginners, Intermediate',
+      price: '₹18,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=Python%20programming%20training%20with%20code%20editor%20showing%20Python%20syntax%20and%20data%20analysis%2C%20professional%20development%20workspace%2C%20clean%20tech%20environment&width=400&height=250&seq=py001&orientation=landscape'
     },
     {
       id: 8,
-      title: 'Communication Excellence',
-      category: 'personal',
-      description: 'Enhance your communication skills for professional success in presentations, meetings, and networking.',
-      duration: '4 weeks',
-      level: 'Beginner',
-      image: 'https://readdy.ai/api/search-image?query=professional%20communication%20training%20session%20with%20people%20presenting%20and%20engaging%2C%20modern%20conference%20room%2C%20inspiring%20learning%20environment%2C%20bright%20professional%20atmosphere&width=400&height=250&seq=ce001&orientation=landscape'
+      slug: 'data-analytics-excel-power-bi',
+      title: 'Data Analytics with Excel & Power BI',
+      category: 'technology',
+      description: 'Training on data analysis using Excel and Power BI for business intelligence and data-driven decision making.',
+      duration: '3 months',
+      level: 'Intermediate',
+      price: '₹20,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=data%20analytics%20training%20with%20Excel%20spreadsheets%20and%20Power%20BI%20dashboards%20showing%20charts%20and%20graphs%2C%20professional%20data%20analysis%20workspace&width=400&height=250&seq=da001&orientation=landscape'
     },
     {
       id: 9,
+      slug: 'graphic-design-photoshop-ai',
+      title: 'Graphic Design (Photoshop & AI)',
+      category: 'digital',
+      description: 'Creative design training covering Photoshop and AI tools for professional graphic design and digital art creation.',
+      duration: '3 months',
+      level: 'Beginners, Intermediate',
+      price: '₹20,600 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=graphic%20design%20studio%20with%20Photoshop%20and%20AI%20design%20tools%20on%20computer%20screens%2C%20creative%20workspace%20with%20digital%20art%20and%20design%20elements&width=400&height=250&seq=gd001&orientation=landscape'
+    },
+    {
+      id: 10,
+      slug: 'cybersecurity-fundamentals',
       title: 'Cybersecurity Fundamentals',
       category: 'technology',
-      description: 'Learn essential cybersecurity principles and practices to protect digital assets and information systems.',
-      duration: '7 weeks',
+      description: 'An introduction to cybersecurity principles, threat detection, and protection strategies for digital security professionals.',
+      duration: '3 months',
+      level: 'Beginners, Intermediate',
+      price: '₹24,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=cybersecurity%20training%20environment%20with%20security%20monitoring%20screens%20and%20digital%20protection%20interfaces%2C%20professional%20cyber%20defense%20workspace&width=400&height=250&seq=cs001&orientation=landscape'
+    },
+    {
+      id: 11,
+      slug: 'artificial-intelligence-ai-basics',
+      title: 'Artificial Intelligence (AI) Basics',
+      category: 'technology',
+      description: 'A beginner-friendly introduction to AI concepts, machine learning basics, and practical AI applications in business.',
+      duration: '4 months',
       level: 'Intermediate',
-      image: 'https://readdy.ai/api/search-image?query=cybersecurity%20training%20setup%20with%20security%20monitoring%20screens%20and%20digital%20protection%20interfaces%2C%20high-tech%20professional%20environment%2C%20clean%20modern%20office%20space&width=400&height=250&seq=cf001&orientation=landscape'
+      price: '₹28,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=artificial%20intelligence%20training%20workspace%20with%20AI%20algorithms%20and%20machine%20learning%20models%20on%20computer%20screens%2C%20futuristic%20tech%20learning%20environment&width=400&height=250&seq=ai001&orientation=landscape'
+    },
+    {
+      id: 12,
+      slug: 'entrepreneurship-startup-skills',
+      title: 'Entrepreneurship & Startup Skills',
+      category: 'business',
+      description: 'Teaches core entrepreneurial skills including business planning, startup strategies, and essential management techniques.',
+      duration: '2 months',
+      level: 'Beginners, Intermediate',
+      price: '₹15,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=entrepreneurship%20training%20session%20with%20business%20planning%20materials%20and%20startup%20strategy%20discussions%2C%20professional%20business%20development%20environment&width=400&height=250&seq=es001&orientation=landscape'
+    },
+    {
+      id: 13,
+      slug: 'soft-skills-personality-development',
+      title: 'Soft Skills & Personality Development',
+      category: 'personal',
+      description: 'Focused on communication skills, leadership development, and personality enhancement for professional and personal growth.',
+      duration: '1.5 months',
+      level: 'Beginners',
+      price: '₹8,000 (with GST)',
+      image: 'https://readdy.ai/api/search-image?query=soft%20skills%20training%20workshop%20with%20people%20practicing%20communication%20and%20leadership%20skills%2C%20professional%20development%20seminar%20environment&width=400&height=250&seq=ss001&orientation=landscape'
     }
   ];
 
@@ -195,7 +257,7 @@ export default function CoursesPage() {
                   </div>
                   
                   <Link
-                    href={`/courses/${course.id}`}
+                    href={`/courses/${course.id}/${course.slug}`}
                     className="w-full bg-[#0097A7] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#006B7A] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-center block whitespace-nowrap"
                   >
                     Learn More

@@ -21,13 +21,12 @@ export default function Header() {
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-18">
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#0097A7] rounded-lg flex items-center justify-center group-hover:bg-[#006B7A] transition-colors duration-300">
-              <span className="text-white font-bold text-lg lg:text-xl">C</span>
-            </div>
-            <span className="font-['Pacifico'] text-xl lg:text-2xl text-[#0097A7] group-hover:text-[#006B7A] transition-colors duration-300">
-              Ceorra Academy
-            </span>
+          <Link href="/" className="flex items-center group">
+            <img 
+              src="https://static.readdy.ai/image/7fe129f8d7ac12cdc97a659d50dae110/aa511150326b2feb617cbeb6aef0a7d3.png" 
+              alt="Ceorra Academy" 
+              className="h-10 lg:h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
@@ -45,10 +44,6 @@ export default function Header() {
             </Link>
             <Link href="/services" className="text-[#4D4D4D] hover:text-[#0097A7] font-medium transition-all duration-300 relative group">
               Services
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0097A7] transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link href="/resources" className="text-[#4D4D4D] hover:text-[#0097A7] font-medium transition-all duration-300 relative group">
-              Resources
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0097A7] transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link href="/contact" className="text-[#4D4D4D] hover:text-[#0097A7] font-medium transition-all duration-300 relative group">
@@ -107,13 +102,6 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Services
-            </Link>
-            <Link
-              href="/resources"
-              className="block px-4 py-3 text-[#4D4D4D] hover:text-[#0097A7] hover:bg-[#0097A7]/5 font-medium transition-all duration-300 rounded-lg"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Resources
             </Link>
             <Link
               href="/contact"
