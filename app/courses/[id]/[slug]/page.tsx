@@ -18,6 +18,7 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function CourseDetailPage({ params }: { params: { id: string; slug: string } }) {
-  return <CourseDetail courseId={params.id} />;
+export default async function CourseDetailPage({ params }: { params: Promise<{ id: string; slug: string }> }) {
+  const { id } = await params;
+  return <CourseDetail courseId={id} />;
 }
